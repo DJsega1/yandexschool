@@ -5,7 +5,7 @@ parser.add_argument('-v', '--value', type=str, help='Input search query')
 parser.add_argument('-f', '--file', type=str, help='Output file')
 args = parser.parse_args()  # Парсинг аргументов командной строки
 value, output = args.value, args.file
-assembly_sort = 'stars'
+sort = 'stars'
 order = 'desc'
 
 
@@ -29,19 +29,22 @@ def get_info(per_page, page):
     return requests.get(
         'https://api.github.com/search/repositories',
         params={'q': value,
-                'assembly&sort': assembly_sort,
+                'sort': sort,
                 'order': order,
                 'per_page': per_page,
                 'page': page},
-    ).json()
+    )
 
 
 def write_file():
     x = open(output, "w")
-    for i in range(1, 11):
-        response = get_info(100, i)
-        info = json.dumps(response.get("items"), indent=4, separators=(", ", ": "))
+    page = 1
+    response = get_info(100, page)
+    while response.status_code == 200:
+        info = json.dumps(response.json().get("items"), indent=4, separators=(", ", ": "))
         x.write(info)
+        page += 1
+        response = get_info(100, page)
     x.close()
 
 
