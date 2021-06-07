@@ -1,8 +1,8 @@
-search_reps/
-search_reps/!Задание.txt
+search_reps/*
+!search_reps/Задание.txt
 
-database/
-database/!Задание.txt
+database/*
+!database/Задание.txt
 
 AutoSchool/
 db_to_excel/
