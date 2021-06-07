@@ -1,0 +1,21 @@
+В этом и последующих уроках будем работать с воображаемым проектом Vita.
+Этот урок посвятим настройке базы данных с нужными таблицами.
+
+1. Установить локальный сервер postgresql версии >= 12 (https://www.postgresql.org/download/).
+
+2. Используя pgAdmin создать роль vita_admin и базу данных vita_db с собственником vita_admin.
+
+3. При помощи sqlalchemy создать следующие таблицы.
+
+Таблица пользователей users:
+id: integer, promary key,
+first_name: varchar,
+last_name: varchar,
+email: varchar,
+city_id: integer, foreign key from cities.id
+
+Таблица городов cities:
+id: integer primary key,
+title: varchar
+
+4. Средствами sqlalchemy заполнить эти таблицы примерными данными (3-5 городов, 5-10 пользователей).

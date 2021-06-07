@@ -1,4 +1,11 @@
+search_reps/*
+!search_reps/Задание.txt
+
+database/*
+!database/Задание.txt
+
 AutoSchool/
 db_to_excel/
 excel_to_db/
+
 .idea/
